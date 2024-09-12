@@ -7,7 +7,14 @@
                     <h3>Archivos</h3>
                 </div>
                 <div class="col-6">
-                    <button class="btn btn-primary">Hola</button>
+                    <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Acciones
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li><a class="dropdown-item">Nuevo</a></li>
+                        <li><a class="dropdown-item">Borrar</a></li>
+                    </ul>
                 </div>
             </div>
             <table class="table mt-5">
@@ -21,18 +28,19 @@
                 </thead>
                 <tbody>
                     @for (item of files; track $index) {
-                        <tr>
-                            <td> <input type="checkbox" name="" id=""> </td>
-                            <td> {{getEmoji(item.type)}} {{item.name}} </td>
-                            <td> {{item.creation.toLocaleDateString('en-US', {
-                                month: 'short', 
-                                day: 'numeric', 
-                                year: 'numeric',
+                    <tr>
+                        <td> <input type="checkbox" name="" id=""> </td>
+                        <td> {{getEmoji(item.type)}} {{item.name}} </td>
+                        <td> {{item.creation.toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                            year: 'numeric',
                             })}} </td>
-                            <td> @for (img of item.owners; track $index) {
-                                <img src={{img.avatarUrl}} alt="" width="35" height="35" style="border-radius: 50%;">
-                            } </td>
-                        </tr>
+                        <td> @for (img of item.owners; track $index) {
+                            <img src={{img.avatarUrl}} alt="" width="35" height="35" style="border-radius: 50%;">
+                            }
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>
