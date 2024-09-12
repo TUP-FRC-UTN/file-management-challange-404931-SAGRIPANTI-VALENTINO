@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FileItem } from '../models/file.item.model';
+import { FileItem, FileType } from '../models/file.item.model';
 import { FILE_LIST } from '../data/file.storage';
 
 @Component({
@@ -13,4 +13,8 @@ import { FILE_LIST } from '../data/file.storage';
 export class AppComponent {
   files: FileItem[] = FILE_LIST;
   title = 'file-management';
+
+  getEmoji(type: FileType): string {
+    return type === FileType.FOLDER ? '📁' : '📄';
+  }
 }

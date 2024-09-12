@@ -2,8 +2,15 @@
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h3>Archivos</h3>
-            <table class="table">
+            <div class="row">
+                <div class="col-6">
+                    <h3>Archivos</h3>
+                </div>
+                <div class="col-6">
+                    <button class="btn btn-primary">Hola</button>
+                </div>
+            </div>
+            <table class="table mt-5">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -16,10 +23,14 @@
                     @for (item of files; track $index) {
                         <tr>
                             <td> <input type="checkbox" name="" id=""> </td>
-                            <td> {{item.name}} </td>
-                            <td> {{item.creation.toLocaleDateString()}} </td>
+                            <td> {{getEmoji(item.type)}} {{item.name}} </td>
+                            <td> {{item.creation.toLocaleDateString('en-US', {
+                                month: 'short', 
+                                day: 'numeric', 
+                                year: 'numeric',
+                            })}} </td>
                             <td> @for (img of item.owners; track $index) {
-                                <img src={{img.avatarUrl}} alt="" width="50" height="50" style="border-radius: 50%;">
+                                <img src={{img.avatarUrl}} alt="" width="35" height="35" style="border-radius: 50%;">
                             } </td>
                         </tr>
                     }
