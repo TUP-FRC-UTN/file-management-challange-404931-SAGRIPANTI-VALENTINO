@@ -1,1 +1,31 @@
-add code here!!
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h3>Archivos</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Dueños</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (item of files; track $index) {
+                        <tr>
+                            <td> <input type="checkbox" name="" id=""> </td>
+                            <td> {{item.name}} </td>
+                            <td> {{item.creation.toLocaleDateString()}} </td>
+                            <td> @for (img of item.owners; track $index) {
+                                <img src={{img.avatarUrl}} alt="" width="50" height="50" style="border-radius: 50%;">
+                            } </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-4"></div>
+    </div>
+</div>
